@@ -107,8 +107,8 @@ modules:
       - make -C src install IPEPREFIX=$FLATPAK_DEST
     sources:
       - type: archive
-        url: https://github.com/otfried/ipe/releases/download/v7.2.26/ipe-7.2.26-src.tar.gz
-        sha256: e49d0057913a4a516b2017f00d9adb267903528559d1f0c7ebaf6cd914350aa5
+        url: https://github.com/otfried/ipe/releases/download/v7.2.27/ipe-7.2.27-src.tar.gz
+        sha256: c31fdb672f2407b76966ccf9f0179119d4b50736eb22869f80498bc8583bc195
         x-checker-data:
           type: anitya
           project-id: 10261
