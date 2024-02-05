@@ -4,6 +4,7 @@
 
   <name>Ipe</name>
   <summary>The Ipe extensible drawing editor</summary>
+  <developer_name>Otfried Cheong</developer_name>
 
   <url type="homepage">https://ipe.otfried.org/</url>
   <url type="bugtracker">https://ipe.otfried.org/bugzilla.html</url>
@@ -32,7 +33,7 @@
         https://screenshots.debian.net/shrine/screenshot/13645/simage/large-b217e71de46347969242e6e8453b5347.png
       </image>
     </screenshot>
-    <screenshot type="default">
+    <screenshot>
       <caption>Drawing complex process flowcharts in Ipe</caption>
       <image width="774" height="557">
         https://screenshots.debian.net/shrine/screenshot/2074/simage/large-db8bc6e688618fcd09c873ae1f1b4bf8.png
