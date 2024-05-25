@@ -110,8 +110,8 @@ modules:
       - make -C src install IPEPREFIX=$FLATPAK_DEST MOC=/usr/libexec/moc
     sources:
       - type: archive
-        url: https://github.com/otfried/ipe/archive/refs/tags/v7.2.28.tar.gz
-        sha256: ea6ab36fae147972bc2a99d807a607d53894c1289e337804939925f3d005ade6
+        url: https://github.com/otfried/ipe/archive/refs/tags/v7.2.29.tar.gz
+        sha256: 355868879258d9ca9c6b292af85486636e645a4d8e76c7e411d9d706149a24fb
         x-checker-data:
           type: anitya
           project-id: 10261
