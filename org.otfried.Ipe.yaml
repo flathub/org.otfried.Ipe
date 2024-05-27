@@ -33,8 +33,8 @@ modules:
   - name: gsl
     sources:
       - type: archive
-        url: https://ftpmirror.gnu.org/gsl/gsl-2.7.1.tar.gz
-        sha256: dcb0fbd43048832b757ff9942691a8dd70026d5da0ff85601e52687f6deeb34b
+        url: https://ftpmirror.gnu.org/gsl/gsl-2.8.tar.gz
+        sha256: 6a99eeed15632c6354895b1dd542ed5a855c0f15d9ad1326c6fe2b2c9e423190
         x-checker-data:
           type: anitya
           project-id: 1267
@@ -69,8 +69,8 @@ modules:
   - name: enchant
     sources:
       - type: archive
-        url: https://github.com/AbiWord/enchant/releases/download/v2.7.3/enchant-2.7.3.tar.gz
-        sha256: fe6ad4cbe8c71b9384ffdef962be52d4d2bd5ebfb6351435bb390543d4f78b1e
+        url: https://github.com/AbiWord/enchant/releases/download/v2.8.0/enchant-2.8.0.tar.gz
+        sha256: c57add422237b8a7eed116a9a88d8be4f7b9281778fa36f03e1f2c051ecb0372
         x-checker-data:
           type: anitya
           project-id: 6601
