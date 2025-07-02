@@ -84,7 +84,7 @@ modules:
       - /share
 
   - name: qtspell
-    buildsystem: cmake
+    buildsystem: cmake-ninja
     config-opts:
       - -DQT_VER:STRING=6
     sources:
