@@ -30,13 +30,13 @@
     <screenshot type="default">
       <caption>Drawing basic shapes and typesetting equations in Ipe</caption>
       <image width="753" height="600">
-        https://screenshots.debian.net/shrine/screenshot/13645/simage/large-b217e71de46347969242e6e8453b5347.png
+        https://screenshots.debian.net/screenshot/ipe/13645
       </image>
     </screenshot>
     <screenshot>
       <caption>Drawing complex process flowcharts in Ipe</caption>
       <image width="774" height="557">
-        https://screenshots.debian.net/shrine/screenshot/2074/simage/large-db8bc6e688618fcd09c873ae1f1b4bf8.png
+        https://screenshots.debian.net/screenshot/ipe/2074
       </image>
     </screenshot>
   </screenshots>
