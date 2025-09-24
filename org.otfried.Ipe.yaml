@@ -1,7 +1,7 @@
 app-id: org.otfried.Ipe
 
 runtime: org.kde.Platform
-runtime-version: '6.7'
+runtime-version: '6.9'
 sdk: org.kde.Sdk
 
 finish-args:
@@ -21,7 +21,7 @@ add-extensions:
     directory: texlive
     subdirectories: true
     autodelete: true
-    version: '23.08'
+    version: '24.08'
     no-autodownload: true
 
 modules:
@@ -84,7 +84,7 @@ modules:
       - /share
 
   - name: qtspell
-    buildsystem: cmake
+    buildsystem: cmake-ninja
     config-opts:
       - -DQT_VER:STRING=6
     sources:
@@ -105,9 +105,9 @@ modules:
   - name: ipe
     buildsystem: simple
     build-commands:
-      - make -C src IPEPREFIX=$FLATPAK_DEST MOC=/usr/libexec/moc
-      - make -C src documentation IPEPREFIX=$FLATPAK_DEST MOC=/usr/libexec/moc
-      - make -C src install IPEPREFIX=$FLATPAK_DEST MOC=/usr/libexec/moc
+      - make -C src IPEPREFIX=$FLATPAK_DEST MOC=/usr/lib/libexec/moc
+      - make -C src documentation IPEPREFIX=$FLATPAK_DEST MOC=/usr/lib/libexec/moc
+      - make -C src install IPEPREFIX=$FLATPAK_DEST MOC=/usr/lib/libexec/moc
     sources:
       - type: archive
         url: https://github.com/otfried/ipe/archive/refs/tags/v7.2.30.tar.gz
