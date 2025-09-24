@@ -105,9 +105,9 @@ modules:
   - name: ipe
     buildsystem: simple
     build-commands:
-      - make -C src IPEPREFIX=$FLATPAK_DEST MOC=/usr/libexec/moc
-      - make -C src documentation IPEPREFIX=$FLATPAK_DEST MOC=/usr/libexec/moc
-      - make -C src install IPEPREFIX=$FLATPAK_DEST MOC=/usr/libexec/moc
+      - make -C src IPEPREFIX=$FLATPAK_DEST MOC=/usr/lib/libexec/moc
+      - make -C src documentation IPEPREFIX=$FLATPAK_DEST MOC=/usr/lib/libexec/moc
+      - make -C src install IPEPREFIX=$FLATPAK_DEST MOC=/usr/lib/libexec/moc
     sources:
       - type: archive
         url: https://github.com/otfried/ipe/archive/refs/tags/v7.2.30.tar.gz
