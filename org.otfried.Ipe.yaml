@@ -4,6 +4,8 @@ runtime: org.kde.Platform
 runtime-version: '6.9'
 sdk: org.kde.Sdk
 
+command: ipe
+
 finish-args:
   - --share=ipc
   - --share=network
@@ -14,8 +16,12 @@ finish-args:
   - --persist=.ipe
   - --env=PATH=/app/bin:/app/texlive/bin/x86_64-linux:/app/texlive/bin/aarch64-linux:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 
-command: ipe
-
+cleanup:
+    - /include
+    - /lib/pkgconfig
+    - /share/man
+    - '*.la'
+    - '*.a'
 add-extensions:
   org.freedesktop.Sdk.Extension.texlive:
     directory: texlive
@@ -41,10 +47,7 @@ modules:
           stable-only: true
           url-template: https://ftpmirror.gnu.org/gsl/gsl-$version.tar.gz
     cleanup:
-      - '*.a'
-      - '*.la'
       - /bin
-      - /include
       - /share
 
   - name: libspiro
@@ -58,10 +61,7 @@ modules:
           stable-only: true
           url-template: https://github.com/fontforge/libspiro/releases/download/20221101/libspiro-dist-$version.tar.gz
     cleanup:
-      - '*.a'
-      - '*.la'
       - /bin
-      - /include
       - /share
 
   - shared-modules/lua5.4/lua-5.4.json
@@ -77,10 +77,7 @@ modules:
           stable-only: true
           url-template: https://github.com/AbiWord/enchant/releases/download/v$version/enchant-$version.tar.gz
     cleanup:
-      - '*.a'
-      - '*.la'
       - /bin
-      - /include
       - /share
 
   - name: qtspell
@@ -97,10 +94,7 @@ modules:
           stable-only: true
           url-template: https://github.com/manisandro/qtspell/archive/refs/tags/$version.tar.gz
     cleanup:
-      - '*.a'
-      - '*.la'
       - /bin
-      - /include
 
   - name: ipe
     buildsystem: simple
