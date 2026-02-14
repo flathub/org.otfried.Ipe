@@ -4,6 +4,8 @@ runtime: org.kde.Platform
 runtime-version: '6.9'
 sdk: org.kde.Sdk
 
+command: ipe
+
 finish-args:
   - --share=ipc
   - --share=network
@@ -14,8 +16,14 @@ finish-args:
   - --persist=.ipe
   - --env=PATH=/app/bin:/app/texlive/bin/x86_64-linux:/app/texlive/bin/aarch64-linux:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 
-command: ipe
-
+cleanup:
+    - /include
+    - /lib/pkgconfig
+    - /share/aclocal
+    - /share/man
+    - /share/doc
+    - '*.la'
+    - '*.a'
 add-extensions:
   org.freedesktop.Sdk.Extension.texlive:
     directory: texlive
@@ -31,6 +39,8 @@ modules:
       - mkdir /app/texlive
 
   - name: gsl
+    cleanup:
+      - /bin
     sources:
       - type: archive
         url: https://ftpmirror.gnu.org/gsl/gsl-2.8.tar.gz
@@ -40,14 +50,10 @@ modules:
           project-id: 1267
           stable-only: true
           url-template: https://ftpmirror.gnu.org/gsl/gsl-$version.tar.gz
-    cleanup:
-      - '*.a'
-      - '*.la'
-      - /bin
-      - /include
-      - /share
 
   - name: libspiro
+    cleanup:
+      - /bin
     sources:
       - type: archive
         url: https://github.com/fontforge/libspiro/releases/download/20221101/libspiro-dist-20221101.tar.gz
@@ -57,16 +63,13 @@ modules:
           project-id: 1725
           stable-only: true
           url-template: https://github.com/fontforge/libspiro/releases/download/20221101/libspiro-dist-$version.tar.gz
-    cleanup:
-      - '*.a'
-      - '*.la'
-      - /bin
-      - /include
-      - /share
 
   - shared-modules/lua5.4/lua-5.4.json
 
   - name: enchant
+    cleanup:
+      - /bin
+      - /share/enchant-2
     sources:
       - type: archive
         url: https://github.com/AbiWord/enchant/releases/download/v2.8.16/enchant-2.8.16.tar.gz
@@ -76,17 +79,13 @@ modules:
           project-id: 6601
           stable-only: true
           url-template: https://github.com/AbiWord/enchant/releases/download/v$version/enchant-$version.tar.gz
-    cleanup:
-      - '*.a'
-      - '*.la'
-      - /bin
-      - /include
-      - /share
 
   - name: qtspell
     buildsystem: cmake-ninja
     config-opts:
       - -DQT_VER:STRING=6
+    cleanup:
+      - /bin
     sources:
       - type: archive
         url: https://github.com/manisandro/qtspell/archive/refs/tags/1.0.2.tar.gz
@@ -96,11 +95,6 @@ modules:
           project-id: 11246
           stable-only: true
           url-template: https://github.com/manisandro/qtspell/archive/refs/tags/$version.tar.gz
-    cleanup:
-      - '*.a'
-      - '*.la'
-      - /bin
-      - /include
 
   - name: ipe
     buildsystem: simple
