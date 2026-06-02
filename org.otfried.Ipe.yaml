@@ -94,9 +94,9 @@ modules:
 
   - name: ipe
     buildsystem: simple
-    # A temporary solution. See: https://github.com/otfried/ipe/issues/600
     license-files:
       - README.md
+      - doc/gpl.txt
     build-commands:
       - make -C src IPEPREFIX=$FLATPAK_DEST MOC=/usr/lib/libexec/moc
       - make -C src documentation IPEPREFIX=$FLATPAK_DEST MOC=/usr/lib/libexec/moc
