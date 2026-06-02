@@ -1,11 +1,8 @@
 app-id: org.otfried.Ipe
-
 runtime: org.kde.Platform
 runtime-version: '6.9'
 sdk: org.kde.Sdk
-
 command: ipe
-
 finish-args:
   - --share=ipc
   - --share=network
@@ -15,7 +12,6 @@ finish-args:
   - --filesystem=xdg-documents:rw
   - --persist=.ipe
   - --env=PATH=/app/bin:/app/texlive/bin/x86_64-linux:/app/texlive/bin/aarch64-linux:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
-
 cleanup:
     - /include
     - /lib/pkgconfig
@@ -102,6 +98,10 @@ modules:
       - make -C src IPEPREFIX=$FLATPAK_DEST MOC=/usr/lib/libexec/moc
       - make -C src documentation IPEPREFIX=$FLATPAK_DEST MOC=/usr/lib/libexec/moc
       - make -C src install IPEPREFIX=$FLATPAK_DEST MOC=/usr/lib/libexec/moc
+    post-install:
+      - install -Dm0644 org.otfried.Ipe.metainfo.xml -t $FLATPAK_DEST/share/metainfo
+      - install -Dm0644 ipe.desktop $FLATPAK_DEST/share/applications/$FLATPAK_ID.desktop
+      - install -Dm0644 artwork/ipe.iconset/icon_512x512.png $FLATPAK_DEST/share/icons/hicolor/512x512/apps/$FLATPAK_ID.png
     sources:
       - type: archive
         url: https://github.com/otfried/ipe/archive/refs/tags/v7.2.30.tar.gz
@@ -115,7 +115,3 @@ modules:
         path: org.otfried.Ipe.metainfo.xml
       - type: file
         path: ipe.desktop
-    post-install:
-      - install -Dm0644 org.otfried.Ipe.metainfo.xml -t $FLATPAK_DEST/share/metainfo
-      - install -Dm0644 ipe.desktop $FLATPAK_DEST/share/applications/$FLATPAK_ID.desktop
-      - install -Dm0644 artwork/ipe.iconset/icon_512x512.png $FLATPAK_DEST/share/icons/hicolor/512x512/apps/$FLATPAK_ID.png
