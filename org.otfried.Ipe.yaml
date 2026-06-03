@@ -1,9 +1,8 @@
 app-id: org.otfried.Ipe
-
 runtime: org.kde.Platform
-runtime-version: '6.9'
+runtime-version: '6.10'
 sdk: org.kde.Sdk
-
+command: ipe
 finish-args:
   - --share=ipc
   - --share=network
@@ -13,15 +12,20 @@ finish-args:
   - --filesystem=xdg-documents:rw
   - --persist=.ipe
   - --env=PATH=/app/bin:/app/texlive/bin/x86_64-linux:/app/texlive/bin/aarch64-linux:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
-
-command: ipe
-
+cleanup:
+    - /include
+    - /lib/pkgconfig
+    - /share/aclocal
+    - /share/man
+    - /share/doc
+    - '*.la'
+    - '*.a'
 add-extensions:
   org.freedesktop.Sdk.Extension.texlive:
     directory: texlive
     subdirectories: true
     autodelete: true
-    version: '24.08'
+    version: '25.08'
     no-autodownload: true
 
 modules:
@@ -31,6 +35,8 @@ modules:
       - mkdir /app/texlive
 
   - name: gsl
+    cleanup:
+      - /bin
     sources:
       - type: archive
         url: https://ftpmirror.gnu.org/gsl/gsl-2.8.tar.gz
@@ -40,33 +46,26 @@ modules:
           project-id: 1267
           stable-only: true
           url-template: https://ftpmirror.gnu.org/gsl/gsl-$version.tar.gz
-    cleanup:
-      - '*.a'
-      - '*.la'
-      - /bin
-      - /include
-      - /share
 
   - name: libspiro
+    cleanup:
+      - /bin
     sources:
       - type: archive
-        url: https://github.com/fontforge/libspiro/releases/download/20221101/libspiro-dist-20221101.tar.gz
-        sha256: 5984fb5af3e4e1f927f3a74850b705a711fb86284802a5e6170b09786440e8be
+        url: https://github.com/fontforge/libspiro/releases/download/20240903/libspiro-dist-20240903.tar.gz
+        sha256: 1412a21b943c6e1db834ee2d74145aad20b3f62b12152d475613b8241d9cde10
         x-checker-data:
           type: anitya
           project-id: 1725
           stable-only: true
-          url-template: https://github.com/fontforge/libspiro/releases/download/20221101/libspiro-dist-$version.tar.gz
-    cleanup:
-      - '*.a'
-      - '*.la'
-      - /bin
-      - /include
-      - /share
+          url-template: https://github.com/fontforge/libspiro/releases/download/$version/libspiro-dist-$version.tar.gz
 
   - shared-modules/lua5.4/lua-5.4.json
 
   - name: enchant
+    cleanup:
+      - /bin
+      - /share/enchant-2
     sources:
       - type: archive
         url: https://github.com/AbiWord/enchant/releases/download/v2.8.16/enchant-2.8.16.tar.gz
@@ -76,17 +75,13 @@ modules:
           project-id: 6601
           stable-only: true
           url-template: https://github.com/AbiWord/enchant/releases/download/v$version/enchant-$version.tar.gz
-    cleanup:
-      - '*.a'
-      - '*.la'
-      - /bin
-      - /include
-      - /share
 
   - name: qtspell
     buildsystem: cmake-ninja
     config-opts:
       - -DQT_VER:STRING=6
+    cleanup:
+      - /bin
     sources:
       - type: archive
         url: https://github.com/manisandro/qtspell/archive/refs/tags/1.0.2.tar.gz
@@ -96,18 +91,20 @@ modules:
           project-id: 11246
           stable-only: true
           url-template: https://github.com/manisandro/qtspell/archive/refs/tags/$version.tar.gz
-    cleanup:
-      - '*.a'
-      - '*.la'
-      - /bin
-      - /include
 
   - name: ipe
     buildsystem: simple
+    license-files:
+      - README.md
+      - doc/gpl.txt
     build-commands:
       - make -C src IPEPREFIX=$FLATPAK_DEST MOC=/usr/lib/libexec/moc
       - make -C src documentation IPEPREFIX=$FLATPAK_DEST MOC=/usr/lib/libexec/moc
       - make -C src install IPEPREFIX=$FLATPAK_DEST MOC=/usr/lib/libexec/moc
+    post-install:
+      - install -Dm0644 org.otfried.Ipe.metainfo.xml -t $FLATPAK_DEST/share/metainfo
+      - install -Dm0644 ipe.desktop $FLATPAK_DEST/share/applications/$FLATPAK_ID.desktop
+      - install -Dm0644 artwork/ipe.iconset/icon_512x512.png $FLATPAK_DEST/share/icons/hicolor/512x512/apps/$FLATPAK_ID.png
     sources:
       - type: archive
         url: https://github.com/otfried/ipe/archive/refs/tags/v7.2.30.tar.gz
@@ -121,7 +118,3 @@ modules:
         path: org.otfried.Ipe.metainfo.xml
       - type: file
         path: ipe.desktop
-    post-install:
-      - install -Dm0644 org.otfried.Ipe.metainfo.xml -t $FLATPAK_DEST/share/metainfo
-      - install -Dm0644 ipe.desktop $FLATPAK_DEST/share/applications/$FLATPAK_ID.desktop
-      - install -Dm0644 artwork/ipe.iconset/icon_512x512.png $FLATPAK_DEST/share/icons/hicolor/512x512/apps/$FLATPAK_ID.png

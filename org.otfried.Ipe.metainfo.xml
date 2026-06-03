@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>org.otfried.Ipe</id>
-
-  <name>Ipe</name>
-  <summary>The Ipe extensible drawing editor</summary>
-  <developer_name>Otfried Cheong</developer_name>
-
-  <url type="homepage">https://ipe.otfried.org/</url>
-  <url type="bugtracker">https://ipe.otfried.org/bugzilla.html</url>
-
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
-
+  <name>Ipe</name>
+  <summary>The Ipe extensible drawing editor</summary>
+  <developer id="org.otfried">
+    <name>Otfried Cheong</name>
+  </developer>
+  <url type="homepage">https://ipe.otfried.org</url>
+  <url type="bugtracker">https://github.com/otfried/ipe/issues</url>
+  <url type="vcs-browser">https://github.com/otfried/ipe/</url>
   <description>
     <p>
-      Ipe is a drawing editor for creating figures in PDF format. It supports making small figures for inclusion into LaTeX-documents as well as making multi-page PDF presentations.
+      Ipe is a drawing editor for creating figures in PDF format. It supports making small figures
+      for inclusion into LaTeX-documents as well as making multi-page PDF presentations.
     </p>
   </description>
-
   <launchable type="desktop-id">org.otfried.Ipe.desktop</launchable>
-  <categories>
-    <category>Graphics</category>
-    <category>Qt</category>
-  </categories>
   <content_rating type="oars-1.1">
     <content_attribute id="social-info">intense</content_attribute>
   </content_rating>
@@ -41,12 +36,8 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="7.2.30" date="2024-06-01">
-      <description></description>
-    </release>
-    <release version="7.2.29" date="2024-05-25">
-      <description/>
-    </release>
+    <release version="7.2.30" date="2024-06-01"/>
+    <release version="7.2.29" date="2024-05-25"/>
     <release version="7.2.28" date="2023-09-25"/>
     <release version="7.2.27" date="2023-05-05"/>
     <release version="7.2.26" date="2022-07-16"/>
