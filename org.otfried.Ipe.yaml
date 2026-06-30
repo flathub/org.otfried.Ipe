@@ -13,13 +13,13 @@ finish-args:
   - --persist=.ipe
   - --env=PATH=/app/bin:/app/texlive/bin/x86_64-linux:/app/texlive/bin/aarch64-linux:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 cleanup:
-    - /include
-    - /lib/pkgconfig
-    - /share/aclocal
-    - /share/man
-    - /share/doc
-    - '*.la'
-    - '*.a'
+  - /include
+  - /lib/pkgconfig
+  - /share/aclocal
+  - /share/man
+  - /share/doc
+  - '*.la'
+  - '*.a'
 add-extensions:
   org.freedesktop.Sdk.Extension.texlive:
     directory: texlive
@@ -68,8 +68,8 @@ modules:
       - /share/enchant-2
     sources:
       - type: archive
-        url: https://github.com/AbiWord/enchant/releases/download/v2.8.16/enchant-2.8.16.tar.gz
-        sha256: d73162b5eff401a6397e1215e2b103bcef83f921c396c7f6b1394d2450d124e2
+        url: https://github.com/AbiWord/enchant/releases/download/v2.8.17/enchant-2.8.17.tar.gz
+        sha256: ee40256e271d0bc1f212ecbc8b8d3da9066b33c9ca987d266759665eb0ca694d
         x-checker-data:
           type: anitya
           project-id: 6601
